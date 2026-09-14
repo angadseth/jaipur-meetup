@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jaipur Meetup · Chai, Baarish aur Baatchit</title>
+<meta name="description" content="Seven houses of IITM BS meet at Jantar Mantar, Jaipur on 20 September, 9 AM. See who is coming, live.">
+<meta name="theme-color" content="#0D1322">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jaipur Meetup · Chai, Baarish aur Baatchit">
+<meta property="og:description" content="Jantar Mantar · 20 September · 9 AM onwards. Your phone is 20 minutes ahead of Jaipur's sun. Fill the form and your name goes up on the wall.">
+<meta property="og:image" content="https://jaipur-meetup.vercel.app/assets/poster-final.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Montserrat:wght@400;500;600;700&family=Sacramento&display=swap">
+<style>
+  :root {
+    --sky-top: #F4E8D4;
+    --sky-bottom: #E6C49A;
+    --ink: #2B241D;
+    --muted: #6F5E4B;
+    --accent: #9C3B2A;
+    --accent-ink: #FFF8EE;
+    --line: rgba(43, 36, 29, 0.18);
+    --panel: rgba(255, 250, 242, 0.62);
+    --stone: #D6B283;
+    --stone-edge: #A9784A;
+    --paper: #F7EEDD;
+    --paper-ink: #2B241D;
+    --paper-muted: rgba(43, 36, 29, 0.6);
+    --paper-accent: #9C3B2A;
+  }
+  body[data-sky="twilight"] {
+    --sky-top: #3B2F4B; --sky-bottom: #D9855A; --ink: #FBF1E4; --muted: rgba(251, 241, 228, 0.76);
+    --accent: #FFB07A; --accent-ink: #1B1410; --line: rgba(251, 241, 228, 0.24); --panel: rgba(34, 24, 38, 0.42);
+    --stone: #C49470; --stone-edge: #F0C49B;
+  }
+  body[data-sky="night"] {
+    --sky-top: #0D1322; --sky-bottom: #28324C; --ink: #F3E9DA; --muted: rgba(243, 233, 218, 0.7);
+    --accent: #E9A46C; --accent-ink: #1B1410; --line: rgba(243, 233, 218, 0.18); --panel: rgba(10, 14, 26, 0.5);
+    --stone: #545066; --stone-edge: #8D86A3;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: #0D1322; scroll-behavior: smooth; }
+  body {
+    margin: 0; min-height: 100vh; color: var(--ink);
+    background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%) fixed;
+    background-color: var(--sky-top);
+    font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .wrap { width: 100%; max-width: 1100px; margin: 0 auto; padding-inline: 18px; }
+  .num { font-variant-numeric: tabular-nums lining-nums; }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+  .eyebrow b { color: var(--accent); }
+  .script { font-family: 'Sacramento', 'Segoe Script', cursive; font-size: 44px; line-height: 1; color: var(--accent); }
+  h1, h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(38px, 7vw, 64px); line-height: 1.02; }
+  h1 em, h2 em { font-style: italic; color: var(--accent); }
+  h2 { font-size: clamp(32px, 5.5vw, 48px); line-height: 1.05; }
+  p { margin: 0; }
+  .lede { color: var(--muted); max-width: 52ch; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; cursor: pointer;
+    font: inherit; font-size: 15px; font-weight: 700; letter-spacing: 0.03em; padding: 14px 20px;
+    background: var(--accent); color: var(--accent-ink); border: 1.5px solid var(--accent);
+  }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* top bar */
+  .bar { position: sticky; top: 0; z-index: 30; background: var(--panel); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+  .wordmark { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 20px; color: var(--ink); text-decoration: none; }
+  .wordmark span { color: var(--accent); }
+  .bar .live { display: none; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+  .bar .btn { padding: 9px 15px; font-size: 13px; }
+  @media (min-width: 720px) { .bar .live { display: inline-flex; } }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #E0527A; box-shadow: 0 0 0 0 rgba(224, 82, 122, 0.5); animation: pulse 2s infinite; flex: none; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(224, 82, 122, 0.45); } 70% { box-shadow: 0 0 0 10px rgba(224, 82, 122, 0); } 100% { box-shadow: 0 0 0 0 rgba(224, 82, 122, 0); } }
+
+  section { padding-block: 56px; }
+  section + section { border-top: 1px solid var(--line); }
+  .head { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+
+  /* hero */
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: center; }
+  @media (min-width: 920px) { .hero .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 56px; } }
+  .hero-copy { display: flex; flex-direction: column; gap: 18px; }
+  .clocks { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .clock { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-block: 14px; }
+  .clock + .clock { border-top: 1px dashed var(--line); }
+  .clock .label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .clock .label b { display: block; font-size: 15px; letter-spacing: 0.01em; text-transform: none; color: var(--ink); }
+  .clock .t { font-weight: 600; font-size: clamp(30px, 8vw, 44px); letter-spacing: -0.02em; white-space: nowrap; }
+  .clock.sun .t { color: var(--accent); }
+  .gap { font-size: 14px; color: var(--muted); }
+  .gap b { color: var(--ink); }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .coming { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+  .coming b { color: var(--ink); font-size: 18px; }
+  .poster { position: relative; margin: 0 auto; max-width: 480px; padding: 10px; background: var(--paper); transform: rotate(-1.6deg); box-shadow: 0 28px 60px -22px rgba(0, 0, 0, 0.5); }
+  .poster img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+  .poster figcaption { color: var(--paper-ink); font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 10px 4px 2px; display: flex; justify-content: space-between; gap: 10px; }
+  .poster figcaption span { color: var(--paper-accent); }
+
+  /* the wall */
+  .tally { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; background: var(--panel); border: 1px solid var(--line); font-size: 13px; font-weight: 600; }
+  .chip img, .chip .letter { width: 26px; height: 26px; border-radius: 50%; }
+  .chip b { font-variant-numeric: tabular-nums; color: var(--accent); }
+  .letter { display: inline-flex; align-items: center; justify-content: center; background: var(--stone); color: #2B241D; font-weight: 700; font-size: 13px; }
+  .wall-top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 26px; }
+  .big { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: clamp(64px, 14vw, 112px); line-height: 0.9; color: var(--accent); }
+  .wall { list-style: none; margin: 0; padding: 8px 4px 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 18px; }
+  .card {
+    position: relative; background: var(--paper); color: var(--paper-ink); padding: 14px 12px 14px; min-height: 150px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
+    transform: rotate(var(--r, 0deg)) translateY(var(--y, 0px)); box-shadow: 0 16px 30px -18px rgba(0, 0, 0, 0.55);
+    transition: transform 0.25s ease;
+  }
+  .card:hover { transform: rotate(0deg) translateY(-4px); }
+  .card::before { content: ''; position: absolute; top: -9px; left: 50%; width: 54px; height: 18px; transform: translateX(-50%) rotate(-3deg); background: rgba(214, 178, 131, 0.75); }
+  .card img, .card .letter { width: 46px; height: 46px; border-radius: 50%; }
+  .card .nm { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 22px; line-height: 1.1; overflow-wrap: anywhere; }
+  .card .hs { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper-muted); }
+  .card .tag { position: absolute; top: 8px; right: 8px; font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper-accent); border: 1px solid var(--paper-accent); padding: 1px 5px; }
+  .card.new { animation: drop 0.7s cubic-bezier(.2, 1.4, .4, 1) both; }
+  @keyframes drop { from { opacity: 0; transform: rotate(0deg) translateY(-40px) scale(1.15); } to { opacity: 1; transform: rotate(var(--r, 0deg)) translateY(var(--y, 0px)) scale(1); } }
+  .empty { grid-column: 1 / -1; padding: 40px 20px; text-align: center; border: 1.5px dashed var(--line); display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .empty p { color: var(--muted); max-width: 40ch; }
+  .wall-note { font-size: 13px; color: var(--muted); }
+  .toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 140%); z-index: 40; background: var(--paper); color: var(--paper-ink); padding: 12px 18px; font-size: 14px; font-weight: 600; box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5); transition: transform 0.4s cubic-bezier(.2, 1.2, .4, 1); max-width: calc(100% - 36px); }
+  .toast.show { transform: translate(-50%, 0); }
+  .toast b { color: var(--paper-accent); }
+
+  /* samay */
+  .split { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  @media (min-width: 900px) { .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; } }
+  .promise { background: var(--panel); border: 1px solid var(--line); padding: 24px 22px; display: flex; flex-direction: column; gap: 16px; }
+  .reading { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: clamp(52px, 11vw, 76px); line-height: 1; color: var(--accent); }
+  .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .countdown div { border-top: 2px solid var(--accent); padding-top: 8px; }
+  .countdown b { display: block; font-size: 28px; font-weight: 700; line-height: 1.1; }
+  .countdown span { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .dial svg { width: 100%; height: auto; display: block; }
+  .dial p { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  /* baarish */
+  .fc-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; }
+  .fc-head p { color: var(--muted); max-width: 34ch; }
+  .bars { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; align-items: end; height: 190px; margin-top: 20px; border-bottom: 1px solid var(--line); }
+  .bars div { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; gap: 6px; }
+  .bars i { display: block; width: 70%; min-height: 3px; background: var(--accent); border-radius: 4px 4px 0 0; }
+  .bars span { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .hours { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 8px; text-align: center; font-size: 12px; color: var(--muted); }
+  .hours b { display: block; color: var(--ink); font-weight: 600; }
+
+  /* place */
+  .photos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  @media (min-width: 760px) { .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .photos figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .photos img { width: 100%; height: auto; aspect-ratio: 960 / 475; object-fit: cover; }
+  .photos figcaption { font-size: 12.5px; color: var(--muted); }
+  .facts { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .facts li { display: flex; justify-content: space-between; gap: 16px; padding-block: 12px; border-bottom: 1px solid var(--line); }
+  .facts span { color: var(--muted); }
+  .facts b { font-weight: 600; text-align: right; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
+  footer .wrap { display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; color: var(--muted); text-align: center; }
+  footer .houses { font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .dot { animation: none; }
+    .card.new { animation: none; }
+    .card, .toast { transition: none; }
+  }
+</style>
+</head>
+<body data-sky="night">
+
+<header class="bar">
+  <div class="wrap">
+    <a class="wordmark" href="#top">Jaipur <span>Meetup</span></a>
+    <span class="live"><span class="dot" aria-hidden="true"></span><span><b class="num" id="bar-count">0</b> on the wall</span></span>
+    <a class="btn js-form" href="https://forms.gle/cKjra2uUjNCCd83q6" target="_blank" rel="noopener">I'm coming</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><b>Seven houses</b> &middot; IITM BS &middot; Jantar Mantar</div>
+        <div class="script">Chai, Baarish aur Baatchit</div>
+        <h1 id="headline">Your phone is <em>20 minutes</em> ahead of the sun.</h1>
+        <p class="lede">We meet at Jantar Mantar, where a 300-year-old stone clock still reads Jaipur's sun to within about two seconds. Right now it disagrees with you.</p>
+        <div class="clocks">
+          <div class="clock"><div class="label">Your phone<b>India Standard Time</b></div><div class="t num" id="ist">--:--:--</div></div>
+          <div class="clock sun"><div class="label">Jaipur's sundial<b>True solar time</b></div><div class="t num" id="solar">--:--:--</div></div>
+        </div>
+        <p class="gap">The sun over Jaipur is behind your phone by <b class="num" id="gap">20 min 18 s</b>.</p>
+        <div class="cta">
+          <a class="btn js-form" href="https://forms.gle/cKjra2uUjNCCd83q6" target="_blank" rel="noopener">Fill the form, get on the wall</a>
+          <span class="coming"><span class="dot" aria-hidden="true"></span><span><b class="num" id="hero-count">0</b> names on the wall</span></span>
+        </div>
+      </div>
+      <figure class="poster">
+        <img src="assets/form/poster-live.gif" width="600" height="600" alt="Jaipur Meetup poster with rain falling and steam rising from two kulhads of chai" fetchpriority="high">
+        <figcaption><span>20 September</span><span>9 AM onwards</span><span>Jantar Mantar</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="wall">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow"><b>The wall</b> &middot; Who's coming</div>
+        <h2>Fill the form and your name <em>goes up here.</em></h2>
+      </div>
+      <div class="wall-top">
+        <div style="display:flex; align-items:end; gap:16px">
+          <div class="big num" id="total">0</div>
+          <p class="lede" id="total-line" style="padding-bottom:10px">names on the wall so far</p>
+        </div>
+        <div class="tally" id="tally"></div>
+      </div>
+      <ul class="wall" id="wall-list" aria-live="polite"></ul>
+      <p class="wall-note" id="wall-note"></p>
+    </div>
+  </section>
+
+  <section id="samay">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow"><b>Samay</b> &middot; Where time meets conversations</div>
+        <h2>At 9:00 on your phone, the sundial will say <em id="meet-inline">08:39:41</em>.</h2>
+      </div>
+      <div class="split">
+        <div class="promise">
+          <div class="eyebrow">Countdown to the gates opening</div>
+          <div class="reading num" id="meet-reading">08:39:41</div>
+          <div class="countdown" id="countdown">
+            <div><b class="num" id="cd-d">0</b><span>days</span></div>
+            <div><b class="num" id="cd-h">00</b><span>hours</span></div>
+            <div><b class="num" id="cd-m">00</b><span>min</span></div>
+            <div><b class="num" id="cd-s">00</b><span>sec</span></div>
+          </div>
+          <p class="lede" id="countdown-note" hidden></p>
+        </div>
+        <div class="dial">
+          <svg viewBox="0 0 320 196" role="img" aria-label="The Samrat Yantra's reading right now">
+            <path d="M30 176 A130 130 0 0 1 290 176" fill="none" stroke="var(--stone-edge)" stroke-width="10" stroke-linecap="round" opacity="0.35"></path>
+            <path d="M30 176 A130 130 0 0 1 290 176" fill="none" stroke="var(--stone)" stroke-width="6" stroke-linecap="round"></path>
+            <g id="ticks"></g>
+            <line id="shadow" x1="160" y1="176" x2="160" y2="46" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"></line>
+            <circle id="shadow-dot" cx="160" cy="46" r="7" fill="var(--accent)"></circle>
+            <path d="M146 176 L160 58 L174 176 Z" fill="var(--stone)" stroke="var(--stone-edge)" stroke-width="1.5"></path>
+            <line x1="18" y1="182" x2="302" y2="182" stroke="var(--line)" stroke-width="1"></line>
+          </svg>
+          <p id="dial-caption">Samrat Yantra &middot; 27.4 m &middot; the world's largest stone sundial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="baarish">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow"><b>Baarish</b> &middot; Live forecast for Jantar Mantar</div>
+        <h2>Will it rain on the meetup?</h2>
+      </div>
+      <div class="split">
+        <div>
+          <div class="fc-head">
+            <div class="big num" id="fc-big" style="font-size:clamp(56px,12vw,88px)">--%</div>
+            <p id="fc-line">Loading the forecast for 20 September, 9 AM.</p>
+          </div>
+          <div class="bars" id="bars" aria-label="Chance of rain each hour"></div>
+          <div class="hours" id="hours"></div>
+        </div>
+        <p class="lede">Jantar Mantar has its own monsoon tradition: on Guru Purnima, astronomers still read the Samrat Yantra and the wind over it to forecast the monsoon. We're checking a weather model instead. The numbers sharpen as the day gets closer, so look again on the night of the 19th.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="place">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow"><b>Where we're going</b> &middot; Jantar Mantar, Jaipur</div>
+        <h2>A UNESCO courtyard built to <em>measure time.</em></h2>
+      </div>
+      <div class="split">
+        <div class="photos" style="grid-template-columns:minmax(0,1fr)">
+          <figure><img src="assets/form/photo-pano-yantras.jpg" width="960" height="475" alt="The instrument courtyard at Jantar Mantar" loading="lazy"><figcaption>The instrument courtyard. Photo: Marcin Białek &amp; Aleks G, Wikimedia Commons, CC BY-SA 3.0, cropped.</figcaption></figure>
+          <figure><img src="assets/form/photo-pano-fort.jpg" width="960" height="475" alt="Nahargarh Fort on the ridge above Jantar Mantar and City Palace" loading="lazy"><figcaption>Nahargarh Fort on the ridge, City Palace next door. Same photo credit.</figcaption></figure>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:20px">
+          <ul class="facts">
+            <li><span>Date</span><b>20 September</b></li>
+            <li><span>Gates</span><b>9:00 AM onwards</b></li>
+            <li><span>Place</span><b>Jantar Mantar, Jaipur</b></li>
+            <li><span>Weather</span><b>Monsoon season, an umbrella helps</b></li>
+          </ul>
+          <div class="cta">
+            <a class="btn js-form" href="https://forms.gle/cKjra2uUjNCCd83q6" target="_blank" rel="noopener">Fill the form</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Jantar+Mantar+Jaipur" target="_blank" rel="noopener">Open in Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="houses">Namdapha &middot; Kanha &middot; Kaziranga &middot; Pichavaram &middot; Saranda &middot; Sundarbans &middot; Corbett</div>
+    <div>Sundial times computed live for Jantar Mantar, 26.9248&deg; N, 75.8246&deg; E. Weather by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0).</div>
+    <div>The wall shows only a first name and house, and only for people who said yes to sharing their details.</div>
+    <div>Made by Pichavaram House.</div>
+  </div>
+</footer>
+
+<script>
+/* WALL_CSV_URL: "Publish to web" CSV link of the sheet tab that holds only
+   first_name, house, status, time (never the raw responses tab). */
+var CONFIG = {
+  FORM_URL: 'https://forms.gle/cKjra2uUjNCCd83q6',
+  WALL_CSV_URL: ''
+};
+
+(function () {
+  var LAT = 26.9248, LON = 75.8246, rad = Math.PI / 180;
+  var MEET = Date.UTC(2026, 8, 20, 3, 30, 0);
+  var CRESTS = { namdapha: 1, kanha: 1, kaziranga: 1, pichavaram: 1, saranda: 1, sundarbans: 1, sunderbans: 'sundarbans', corbett: 1 };
+  var $ = function (id) { return document.getElementById(id); };
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function hms(ms) { var d = new Date(ms); return pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()) + ':' + pad(d.getUTCSeconds()); }
+  function hm(h) { var t = ((Math.round(h * 60) % 1440) + 1440) % 1440; return pad(Math.floor(t / 60)) + ':' + pad(t % 60); }
+
+  /* ---------- sun ---------- */
+  function sun(ms) {
+    var d = new Date(ms);
+    var doy = Math.floor((ms - Date.UTC(d.getUTCFullYear(), 0, 1)) / 864e5) + 1;
+    var h = d.getUTCHours() + d.getUTCMinutes() / 60 + d.getUTCSeconds() / 3600;
+    var g = 2 * Math.PI / 365 * (doy - 1 + (h - 12) / 24);
+    var eot = 229.18 * (0.000075 + 0.001868 * Math.cos(g) - 0.032077 * Math.sin(g) - 0.014615 * Math.cos(2 * g) - 0.040849 * Math.sin(2 * g));
+    var decl = 0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g) - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g);
+    var off = eot + 4 * LON, solarMs = ms + off * 60000;
+    var sh = (((solarMs % 864e5) + 864e5) % 864e5) / 36e5;
+    var alt = Math.asin(Math.sin(LAT * rad) * Math.sin(decl) + Math.cos(LAT * rad) * Math.cos(decl) * Math.cos((sh - 12) * 15 * rad)) / rad;
+    var rise = 12 - Math.acos(Math.max(-1, Math.min(1, -Math.tan(LAT * rad) * Math.tan(decl)))) / rad / 15;
+    return { solarMs: solarMs, solarHour: sh, alt: alt, gapMin: 330 - off, rise: rise };
+  }
+  var meetReading = hms(sun(MEET).solarMs);
+  $('meet-reading').textContent = meetReading; $('meet-inline').textContent = meetReading;
+
+  var ticks = $('ticks');
+  for (var hr = 6; hr <= 18; hr++) {
+    var th = Math.PI * (1 - (hr - 6) / 12), big = hr % 3 === 0;
+    var ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    ln.setAttribute('x1', (160 + 120 * Math.cos(th)).toFixed(1)); ln.setAttribute('y1', (176 - 120 * Math.sin(th)).toFixed(1));
+    ln.setAttribute('x2', (160 + (big ? 106 : 112) * Math.cos(th)).toFixed(1)); ln.setAttribute('y2', (176 - (big ? 106 : 112) * Math.sin(th)).toFixed(1));
+    ln.setAttribute('stroke', 'var(--stone-edge)'); ln.setAttribute('stroke-width', big ? '2' : '1'); ticks.appendChild(ln);
+    if (big) {
+      var tx = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      tx.setAttribute('x', (160 + 92 * Math.cos(th)).toFixed(1)); tx.setAttribute('y', (176 - 92 * Math.sin(th) + 4).toFixed(1));
+      tx.setAttribute('text-anchor', 'middle'); tx.setAttribute('font-size', '11'); tx.setAttribute('font-weight', '600');
+      tx.setAttribute('fill', 'var(--muted)'); tx.setAttribute('font-family', 'Montserrat, sans-serif'); tx.textContent = hr; ticks.appendChild(tx);
+    }
+  }
+
+  var lastSky = '';
+  function tick() {
+    var now = Date.now(), s = sun(now);
+    $('ist').textContent = hms(now + 330 * 60000);
+    $('solar').textContent = hms(s.solarMs);
+    var gs = Math.round(s.gapMin * 60);
+    $('gap').textContent = Math.floor(gs / 60) + ' min ' + (gs % 60) + ' s';
+    $('headline').innerHTML = 'Your phone is <em>' + Math.floor(gs / 60) + ' minutes</em> ahead of the sun.';
+    var sky = s.alt < -6 ? 'night' : s.alt < 8 ? 'twilight' : 'day';
+    if (sky !== lastSky) { document.body.setAttribute('data-sky', sky); lastSky = sky; }
+    var up = s.solarHour >= 6 && s.solarHour <= 18 && s.alt > -2;
+    var t2 = Math.PI * (1 - (Math.max(6, Math.min(18, s.solarHour)) - 6) / 12);
+    var x = 160 + 130 * Math.cos(t2), y = 176 - 130 * Math.sin(t2);
+    $('shadow').setAttribute('x2', x.toFixed(1)); $('shadow').setAttribute('y2', y.toFixed(1));
+    $('shadow-dot').setAttribute('cx', x.toFixed(1)); $('shadow-dot').setAttribute('cy', y.toFixed(1));
+    $('shadow').style.opacity = $('shadow-dot').style.opacity = up ? '1' : '0';
+    $('dial-caption').textContent = up
+      ? 'Samrat Yantra · 27.4 m · reading ' + hms(s.solarMs).slice(0, 5) + ' right now.'
+      : 'The sundial is asleep. The sun rises over Jaipur at about ' + hm(s.rise + s.gapMin / 60) + ' IST.';
+    var left = MEET - now;
+    if (left > 0) {
+      $('cd-d').textContent = Math.floor(left / 864e5); $('cd-h').textContent = pad(Math.floor(left % 864e5 / 36e5));
+      $('cd-m').textContent = pad(Math.floor(left % 36e5 / 6e4)); $('cd-s').textContent = pad(Math.floor(left % 6e4 / 1e3));
+    } else {
+      $('countdown').hidden = true; $('countdown-note').hidden = false;
+      $('countdown-note').textContent = left > -7.5 * 36e5 ? 'It is happening right now. Head to Jantar Mantar.' : 'The sundial has spoken. See you at the next meetup.';
+    }
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- the wall ---------- */
+  function hash(str) { var x = 2166136261; for (var i = 0; i < str.length; i++) { x ^= str.charCodeAt(i); x = Math.imul(x, 16777619); } return x >>> 0; }
+  function parseCSV(text) {
+    var rows = [], row = [], cur = '', q = false;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += c; }
+      else if (c === '"') q = true;
+      else if (c === ',') { row.push(cur); cur = ''; }
+      else if (c === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; }
+      else if (c !== '\r') cur += c;
+    }
+    if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+    return rows;
+  }
+  function crestKey(house) {
+    var k = String(house || '').toLowerCase().replace(/\s*house$/, '').trim();
+    var v = CRESTS[k]; return v === 1 ? k : (typeof v === 'string' ? v : null);
+  }
+  function badge(house, size) {
+    var key = crestKey(house);
+    if (key) { var im = document.createElement('img'); im.src = 'assets/house-' + key + '.png'; im.alt = ''; im.width = size; im.height = size; im.loading = 'lazy'; return im; }
+    var sp = document.createElement('span'); sp.className = 'letter'; sp.textContent = (String(house || '?').trim()[0] || '?').toUpperCase(); return sp;
+  }
+
+  var seen = {}, firstLoad = true, toastTimer = null;
+  function toast(name, house) {
+    var t = $('toast'); t.textContent = '';
+    var b = document.createElement('b'); b.textContent = name;
+    t.appendChild(b); t.appendChild(document.createTextNode(' from ' + house + ' just joined the wall'));
+    t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove('show'); }, 4200);
+  }
+
+  function renderWall(people) {
+    var list = $('wall-list');
+    var total = people.length;
+    $('total').textContent = total; $('hero-count').textContent = total; $('bar-count').textContent = total;
+    $('total-line').textContent = total === 1 ? 'name on the wall so far' : 'names on the wall so far';
+
+    var byHouse = {};
+    people.forEach(function (p) { byHouse[p.house] = (byHouse[p.house] || 0) + 1; });
+    var tally = $('tally'); tally.innerHTML = '';
+    Object.keys(byHouse).sort(function (a, b) { return byHouse[b] - byHouse[a] || a.localeCompare(b); }).forEach(function (h) {
+      var chip = document.createElement('span'); chip.className = 'chip';
+      chip.appendChild(badge(h, 26));
+      chip.appendChild(document.createTextNode(h + ' '));
+      var n = document.createElement('b'); n.textContent = byHouse[h]; chip.appendChild(n);
+      tally.appendChild(chip);
+    });
+
+    if (!total) {
+      list.innerHTML = '';
+      var li = document.createElement('li'); li.className = 'empty';
+      li.innerHTML = '<p>The wall is empty for now. The first person to fill the form gets the first spot.</p>';
+      var a = document.createElement('a'); a.className = 'btn'; a.href = CONFIG.FORM_URL; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Be the first name';
+      li.appendChild(a); list.appendChild(li);
+      return;
+    }
+
+    var fresh = [];
+    list.innerHTML = '';
+    people.forEach(function (p) {
+      var key = p.name + '|' + p.house + '|' + p.time;
+      var h = hash(key);
+      var card = document.createElement('li'); card.className = 'card';
+      card.style.setProperty('--r', (((h % 900) / 100) - 4.5).toFixed(2) + 'deg');
+      card.style.setProperty('--y', (((h >> 10) % 14) - 7) + 'px');
+      if (!seen[key]) { if (!firstLoad) { card.classList.add('new'); fresh.push(p); } seen[key] = true; }
+      card.appendChild(badge(p.house, 46));
+      var nm = document.createElement('div'); nm.className = 'nm'; nm.textContent = p.name; card.appendChild(nm);
+      var hs = document.createElement('div'); hs.className = 'hs'; hs.textContent = p.house; card.appendChild(hs);
+      if (p.status === 'maybe') { var tg = document.createElement('span'); tg.className = 'tag'; tg.textContent = 'maybe'; card.appendChild(tg); }
+      list.appendChild(card);
+    });
+    if (fresh.length) toast(fresh[0].name, fresh[0].house);
+    firstLoad = false;
+  }
+
+  function loadWall() {
+    if (!CONFIG.WALL_CSV_URL) { renderWall([]); $('wall-note').textContent = 'Names appear here as people fill the form.'; return; }
+    fetch(CONFIG.WALL_CSV_URL + (CONFIG.WALL_CSV_URL.indexOf('?') > -1 ? '&' : '?') + 'nocache=' + Date.now())
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (csv) {
+        var rows = parseCSV(csv), people = [];
+        rows.forEach(function (c, i) {
+          if (i === 0 && /first_name/i.test(c[0] || '')) return;
+          var name = (c[0] || '').trim();
+          if (!name) return;
+          people.push({ name: name.slice(0, 24), house: (c[1] || 'Not alloted yet').trim().slice(0, 24), status: (c[2] || '').trim().toLowerCase(), time: (c[3] || '').trim() });
+        });
+        renderWall(people);
+        $('wall-note').textContent = 'Updated ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) + '. New names can take a few minutes to show up.';
+      })
+      .catch(function () { $('wall-note').textContent = 'The wall could not refresh just now. It will try again in a moment.'; });
+  }
+  loadWall();
+  setInterval(loadWall, 30000);
+
+  /* ---------- baarish ---------- */
+  function hourLabel(h) { return (h % 12 === 0 ? 12 : h % 12) + (h < 12 ? ' AM' : ' PM'); }
+  function skyWord(c) { return c < 20 ? 'clear sky' : c < 60 ? 'partly cloudy' : 'cloudy'; }
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=' + LAT + '&longitude=' + LON + '&hourly=precipitation_probability,temperature_2m,cloud_cover&timezone=Asia%2FKolkata&start_date=2026-09-20&end_date=2026-09-20')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (j) {
+      var H = j.hourly, rows = [];
+      for (var i = 0; i < H.time.length; i++) { var h = +H.time[i].slice(11, 13); if (h >= 8 && h <= 13 && H.precipitation_probability[i] != null) rows.push({ h: h, p: H.precipitation_probability[i], t: H.temperature_2m[i], c: H.cloud_cover[i] }); }
+      if (!rows.length) throw new Error('empty');
+      var nine = rows.filter(function (r) { return r.h === 9; })[0] || rows[0];
+      $('fc-big').textContent = nine.p + '%';
+      $('fc-line').textContent = 'chance of rain at 9 AM on 20 September. ' + Math.round(nine.t) + '°C and ' + skyWord(nine.c) + '.';
+      var bars = $('bars'), hours = $('hours'); bars.innerHTML = ''; hours.innerHTML = '';
+      rows.forEach(function (r) {
+        var col = document.createElement('div'); col.title = hourLabel(r.h) + ': ' + r.p + '% chance of rain, ' + Math.round(r.t) + '°C, ' + skyWord(r.c);
+        var v = document.createElement('span'); v.textContent = r.p + '%';
+        var bar = document.createElement('i'); bar.style.height = Math.max(2, r.p * 1.5) + 'px';
+        col.appendChild(v); col.appendChild(bar); bars.appendChild(col);
+        var lab = document.createElement('div'); lab.innerHTML = '<b>' + hourLabel(r.h) + '</b>' + Math.round(r.t) + '°C'; hours.appendChild(lab);
+      });
+    })
+    .catch(function () { $('fc-big').textContent = '—'; $('fc-line').textContent = 'The forecast could not load right now. It is monsoon season, so carry an umbrella.'; });
+})();
+</script>
+</body>
+</html>
