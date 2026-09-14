@@ -127,10 +127,8 @@
   .poster { margin: 0; padding: 10px; background: var(--paper); transform: rotate(-1.8deg); box-shadow: 0 30px 60px -26px var(--shadow); border-radius: 4px; }
   .poster img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 2px; }
   .poster::before { content: ''; position: absolute; top: -10px; left: 50%; width: 96px; height: 22px; transform: translateX(-50%) rotate(3deg); background: rgba(217, 180, 135, 0.8); z-index: 2; }
-  .note { position: absolute; font-size: 22px; transform: rotate(-8deg); color: var(--ink); background: var(--paper); color: var(--paper-ink); padding: 6px 12px; box-shadow: 0 12px 24px -14px var(--shadow); }
-  .note.a { left: -6px; bottom: -18px; }
-  .note.b { right: -4px; top: 18%; transform: rotate(7deg); }
-  @media (max-width: 480px) { .note { font-size: 18px; } .note.b { right: 2px; } }
+  .note { display: table; margin: 18px auto 0; font-size: 24px; transform: rotate(-3deg); background: var(--paper); color: var(--paper-ink); padding: 6px 16px; box-shadow: 0 12px 24px -14px var(--shadow); }
+  @media (max-width: 480px) { .note { font-size: 20px; } }
 
   /* wall */
   .wall-top { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 22px; }
@@ -141,8 +139,8 @@
   .chip img, .chip .letter { width: 26px; height: 26px; border-radius: 50%; }
   .chip b { font-variant-numeric: tabular-nums; color: var(--red); }
   .letter { display: inline-flex; align-items: center; justify-content: center; background: var(--stone); color: #2A1E16; font-weight: 700; font-size: 13px; }
-  .wall { list-style: none; margin: 0; padding: 10px 2px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; }
-  @media (min-width: 620px) { .wall { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 26px 18px; } }
+  .wall { list-style: none; margin: 0; padding: 10px 2px 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 168px)); justify-content: center; gap: 24px 14px; }
+  @media (min-width: 620px) { .wall { grid-template-columns: repeat(auto-fit, minmax(160px, 180px)); gap: 26px 18px; } }
   .card {
     position: relative; background: var(--paper); color: var(--paper-ink); padding: 18px 10px 14px; min-height: 150px;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; border-radius: 3px;
@@ -286,8 +284,7 @@
         <figure class="poster">
           <img src="assets/form/poster-live.gif" width="600" height="600" alt="Jaipur Meetup poster: Jantar Mantar in the rain, two kulhads of chai steaming" fetchpriority="high">
         </figure>
-        <div class="note hand a">Monsoon hits different in Jaipur &#9825;</div>
-        <div class="note hand b">Same people,<br>new conversations</div>
+        <div class="note hand">Monsoon hits different in Jaipur &#9825;</div>
       </div>
     </div>
   </section>
