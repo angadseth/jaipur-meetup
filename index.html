@@ -13,6 +13,10 @@
 <meta property="og:image:width" content="1080">
 <meta property="og:image:height" content="1080">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Montserrat:wght@400;500;600;700&family=Dancing+Script:wght@600;700&family=Caveat:wght@500;600&display=swap">
@@ -83,8 +87,9 @@
   /* top bar */
   .bar { position: sticky; top: 0; z-index: 30; background: var(--panel); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
   .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-block: 8px; }
-  .wordmark { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 19px; color: var(--red); text-decoration: none; letter-spacing: 0.02em; }
-  .wordmark span { color: var(--green); }
+  .wordmark { display: inline-flex; align-items: center; gap: 8px; font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 19px; color: var(--red); text-decoration: none; letter-spacing: 0.02em; white-space: nowrap; }
+  .wordmark img { width: 28px; height: 28px; border-radius: 7px; flex: none; box-shadow: 0 4px 10px -6px var(--shadow); }
+  .wordmark b { color: var(--green); font-weight: 900; }
   .bar .right { display: flex; align-items: center; gap: 12px; }
   .bar .live { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
   .bar .live b { color: var(--ink); }
@@ -247,7 +252,7 @@
 
 <header class="bar">
   <div class="wrap">
-    <a class="wordmark" href="#top">Jaipur <span>Meetup</span></a>
+    <a class="wordmark" href="#top"><img src="assets/icon.svg" width="28" height="28" alt=""><span>Jaipur <b>Meetup</b></span></a>
     <div class="right">
       <span class="live"><span class="dot" aria-hidden="true"></span><b class="num" id="bar-count">0</b><span class="txt">on the wall</span></span>
       <a class="btn" href="https://forms.gle/cKjra2uUjNCCd83q6" target="_blank" rel="noopener">I'm coming</a>
